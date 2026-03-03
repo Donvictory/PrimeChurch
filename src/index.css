@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Literata:wght@400;700&display=swap");
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply font-body bg-bg text-navy antialiased min-h-screen;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-navy text-white px-10 py-4 rounded-full font-medium text-sm transition-all duration-300 hover:translate-y-[-5px] hover:shadow-xl hover:bg-navy-light;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-32;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
