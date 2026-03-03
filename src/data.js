@@ -1,3 +1,6 @@
+import pastor1 from "./pastor-image1.jpeg";
+import pastor2 from "./pastor-image2.jpeg";
+
 export const regions = [
   {
     id: "community",
@@ -15,14 +18,14 @@ export const regions = [
         role: "Pastor",
         description:
           "Pastor Opeyemi is a pragmatic teacher of the word at Prime Church. He is passionate about the young generation and that he co-leads both in the corporate space and in the ministry.",
-        imageUrl: "./src/pastor-image2.jpeg",
+        imageUrl: pastor2,
       },
       {
         name: "Psr. Tim Durotinu",
         role: "Pastor",
         description:
           "Pastor Tim is an existence coach and a pastor at Prime Church. He is driven by the passion to ensure spiritual and emotional healing in the lives of all who listen/sit under him.",
-        imageUrl: "./src/pastor-image1.jpeg",
+        imageUrl: pastor1,
       },
     ],
   },
