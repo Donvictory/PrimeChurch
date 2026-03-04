@@ -1,5 +1,6 @@
-import pastor1 from "./pastor-image1.jpeg";
-import pastor2 from "./pastor-image2.jpeg";
+import pastor1 from "./assets/pastor-image1.jpeg";
+import pastor2 from "./assets/pastor-image2.jpeg";
+import godFirstImg from "./assets/god-first-devotion.jpg";
 
 export const regions = [
   {
@@ -74,16 +75,15 @@ export const prayer = {
 };
 
 export const events = {
-  title: "Some of our upcoming events.",
+  title: "Some of our events.",
   currentEvent: {
-    title: "Fantasia",
+    tag: "Daily Devotion · 6am",
+    title: "START YOUR DAY WITH JESUS",
+    subtitle: "God First Everyday Devotion",
     description:
-      "Join us in Lekki, November 30 - January 1st, 2024 for Fantasia 2024. We can't wait to gather a generation together to God as Him self.",
-    images: [
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1514525253361-beeada483018?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1540575861501-7ad060e39fe1?auto=format&fit=crop&q=80&w=400",
-      "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=400",
-    ],
+      "Join us every morning for God First Everyday Devotion by 6am. A time of prayers, word and daily confessions. Build a habit of starting your day with God.",
+    cta: "Do well to join us by using the link below.",
+    meetLink: "https://meet.google.com/hbq-zoun-wdc",
+    image: godFirstImg,
   },
 };

@@ -8,6 +8,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import churchLogo from "../assets/church-logo.jpg";
 
 const Footer = () => {
   return (
@@ -21,9 +22,11 @@ const Footer = () => {
           className="space-y-12"
         >
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-accent tracking-tighter shadow-sm cursor-pointer hover:text-white transition-colors">
-              PRIME CHURCH
-            </h2>
+            <img
+              src={churchLogo}
+              alt="The Prime Church Logo"
+              className="h-16 md:h-20 w-auto object-contain"
+            />
             <p className="text-lg md:text-xl font-body font-light text-white/50 max-w-[400px] leading-relaxed italic">
               Redefining church culture through modern expressions and spiritual
               empowerment.

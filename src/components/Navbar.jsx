@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import churchLogo from "../assets/church-logo.jpg";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -52,10 +53,14 @@ const Navbar = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="font-heading text-xl md:text-2xl font-bold tracking-[0.2em] cursor-pointer"
+            className="cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            PRIME CHURCH
+            <img
+              src={churchLogo}
+              alt="The Prime Church Logo"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
           </motion.div>
 
           {/* Desktop Menu */}
