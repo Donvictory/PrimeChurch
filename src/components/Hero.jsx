@@ -1,5 +1,6 @@
-import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Instagram } from "lucide-react";
+import { socials } from "../data";
 
 const Hero = ({ activeRegion }) => {
   return (
@@ -73,6 +74,51 @@ const Hero = ({ activeRegion }) => {
         />
         <span className="text-[10px] uppercase font-bold tracking-widest leading-none">
           Scroll to Explore
+        </span>
+      </motion.div>
+
+      {/* Vertical Social Bar */}
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.0, delay: 1.0 }}
+        className="absolute top-1/2 -translate-y-1/2 right-4 md:right-16 z-20 hidden md:flex flex-col items-center gap-10"
+      >
+        <div className="w-[1px] h-20 bg-white/20" />
+        <div className="flex flex-col gap-8">
+          <motion.a
+            href={socials.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2, color: "#E8DCC4" }}
+            className="text-white/40 hover:text-white transition-all transition-colors"
+          >
+            <Instagram size={20} />
+          </motion.a>
+          <motion.a
+            href={socials.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.2, color: "#E8DCC4" }}
+            className="text-white/40 hover:text-white transition-all transition-colors"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+            </svg>
+          </motion.a>
+        </div>
+        <div className="w-[1px] h-20 bg-white/20" />
+        <span className="rotate-90 text-[10px] uppercase font-bold tracking-[0.2em] text-white/20 whitespace-nowrap mt-4">
+          Follow Our Journey
         </span>
       </motion.div>
     </header>

@@ -87,3 +87,11 @@ export const events = {
     image: godFirstImg,
   },
 };
+
+export const socials = {
+  instagram: "https://www.instagram.com/primechurch?igsh=MWc5MnZmb2Rmb3k2Mw==",
+  tiktok: "https://www.tiktok.com/@primeyaba?_r=1&_t=ZS-94Qy5Us2rtU",
+  facebook: "#",
+  twitter: "#",
+  mail: "mailto:hello@primechurch.org",
+};

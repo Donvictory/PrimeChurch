@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import churchLogo from "../assets/church-logo.jpg";
+import { socials } from "../data";
 
 const Footer = () => {
   return (
@@ -66,10 +67,34 @@ const Footer = () => {
           </div>
 
           <div className="flex gap-8">
-            {[Instagram, Facebook, Twitter, Mail].map((Icon, i) => (
+            {[
+              { Icon: Instagram, href: socials.instagram },
+              { Icon: Facebook, href: socials.facebook },
+              { Icon: Twitter, href: socials.twitter },
+              { Icon: Mail, href: socials.mail },
+              {
+                Icon: () => (
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="32"
+                    height="32"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                  </svg>
+                ),
+                href: socials.tiktok,
+              },
+            ].map(({ Icon, href }, i) => (
               <motion.a
                 key={i}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{
                   y: -10,
                   rotate: i % 2 === 0 ? 10 : -10,

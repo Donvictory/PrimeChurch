@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import churchLogo from "../assets/church-logo.jpg";
+import { socials } from "../data";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -74,6 +75,34 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <div className="h-4 w-[1px] bg-white/20 mx-2" />
+            <a
+              href={socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-70 hover:opacity-100 hover:text-accent transition-all duration-300"
+            >
+              <Instagram size={18} />
+            </a>
+            <a
+              href={socials.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-70 hover:opacity-100 hover:text-accent transition-all duration-300"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+              </svg>
+            </a>
           </div>
 
           {/* Mobile Toggle Button */}
@@ -137,6 +166,43 @@ const Navbar = () => {
                 >
                   Redefining Culture. Restoring Hope.
                 </motion.div>
+
+                <div className="flex gap-10 mt-8">
+                  <motion.a
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 }}
+                    href={socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
+                  >
+                    <Instagram size={32} className="text-accent" />
+                  </motion.a>
+                  <motion.a
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 }}
+                    href={socials.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="32"
+                      height="32"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-accent"
+                    >
+                      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                    </svg>
+                  </motion.a>
+                </div>
               </div>
             </motion.div>
           )}
