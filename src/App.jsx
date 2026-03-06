@@ -10,6 +10,7 @@ import Events from "./components/Events";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import FormPage from "./components/FormPage";
+import TrybeFormPage from "./components/TrybeFormPage";
 import { regions } from "./data";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           }
         />
         <Route path="/form" element={<FormPage />} />
+        <Route path="/trybe-form" element={<TrybeFormPage />} />
       </Routes>
 
       <Footer />

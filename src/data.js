@@ -53,7 +53,7 @@ export const sections = {
   trybe: {
     title: "Join the Trybe.",
     description:
-      "We are persuaded that everyone thrives in communities and that is why as a church, we are passionate about building small groups which we call Trybes.",
+      "Trybes are small groups designed to help members grow, connect, and develop in areas like technology, career, creativity, and entrepreneurship.",
     imageUrl:
       "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=600",
   },

@@ -1,0 +1,358 @@
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ChevronRight, Check, Send, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+const TrybeFormPage = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    gender: "",
+    isMember: "",
+    skills: "",
+    roleInterest: "",
+    reason: "",
+    targetTrybe: "",
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Trybe Form submitted:", formData);
+    setIsSubmitted(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 5000);
+  };
+
+  const trybes = ["Tech", "Career", "Creative", "Entrepreneur"];
+
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-navy flex items-center justify-center p-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-md w-full bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-[3rem] shadow-2xl"
+        >
+          <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-accent/20">
+            <Check size={40} className="text-navy" />
+          </div>
+          <h2 className="text-3xl font-heading font-bold text-white mb-4">
+            Registration Received
+          </h2>
+          <p className="text-white/60 mb-8 leading-relaxed">
+            Thank you for joining the Trybe! We are excited to have you. You
+            will receive more information soon.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/")}
+            className="text-accent font-bold uppercase tracking-widest text-xs flex items-center gap-2 mx-auto"
+          >
+            Return Home <ChevronRight size={16} />
+          </motion.button>
+        </motion.div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-bg py-24 md:py-32 px-4 md:px-16">
+      <div className="max-w-3xl mx-auto">
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2 text-navy/40 hover:text-navy transition-colors mb-12 uppercase tracking-widest text-[10px] font-bold"
+        >
+          <ArrowLeft size={14} /> Back
+        </motion.button>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] shadow-2xl shadow-navy/5 relative overflow-hidden"
+        >
+          {/* Header */}
+          <div className="relative z-10 mb-12">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-navy mb-6 tracking-tight">
+              Trybe Registration
+            </h1>
+            <p className="text-text-muted/70 text-base md:text-lg leading-relaxed italic">
+              Thank you for your interest in joining a Trybe. Trybes are small
+              groups designed to help members grow, connect, and develop in
+              different areas of life.
+            </p>
+            <div className="mt-6 p-4 bg-navy/5 rounded-2xl border-l-4 border-accent text-sm text-navy/60 font-medium leading-relaxed">
+              Kindly fill out this form to indicate the Trybe you would like to
+              join and your interest in participating or leading.
+            </div>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Full Name */}
+              <div className="space-y-2">
+                <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                  What is your name? *
+                </label>
+                <input
+                  required
+                  name="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full bg-navy/5 border-none rounded-2xl p-5 text-navy focus:ring-2 focus:ring-accent transition-all outline-none"
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              {/* Phone */}
+              <div className="space-y-2">
+                <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                  Phone Number *
+                </label>
+                <input
+                  required
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full bg-navy/5 border-none rounded-2xl p-5 text-navy focus:ring-2 focus:ring-accent transition-all outline-none"
+                  placeholder="+234..."
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="space-y-2">
+              <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                Email Address *
+              </label>
+              <input
+                required
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full bg-navy/5 border-none rounded-2xl p-5 text-navy focus:ring-2 focus:ring-accent transition-all outline-none"
+                placeholder="name@email.com"
+              />
+            </div>
+
+            {/* Gender */}
+            <div className="space-y-4">
+              <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                Gender *
+              </label>
+              <div className="flex gap-6">
+                {["Male", "Female"].map((option) => (
+                  <label
+                    key={option}
+                    className="flex items-center gap-3 cursor-pointer group"
+                  >
+                    <div
+                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all group-hover:border-accent ${formData.gender === option ? "border-accent bg-accent" : ""}`}
+                    >
+                      {formData.gender === option && (
+                        <div className="w-2 h-2 bg-navy rounded-full" />
+                      )}
+                    </div>
+                    <input
+                      required
+                      type="radio"
+                      name="gender"
+                      value={option}
+                      className="hidden"
+                      onChange={handleChange}
+                    />
+                    <span
+                      className={`text-sm font-medium ${formData.gender === option ? "text-navy" : "text-navy/40"}`}
+                    >
+                      {option}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Member of Prime Church */}
+            <div className="space-y-4">
+              <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                Are you a member of Prime Church? *
+              </label>
+              <div className="flex flex-wrap gap-6">
+                {["Yes", "No", "New member"].map((option) => (
+                  <label
+                    key={option}
+                    className="flex items-center gap-3 cursor-pointer group"
+                  >
+                    <div
+                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all group-hover:border-accent ${formData.isMember === option ? "border-accent bg-accent" : ""}`}
+                    >
+                      {formData.isMember === option && (
+                        <div className="w-2 h-2 bg-navy rounded-full" />
+                      )}
+                    </div>
+                    <input
+                      required
+                      type="radio"
+                      name="isMember"
+                      value={option}
+                      className="hidden"
+                      onChange={handleChange}
+                    />
+                    <span
+                      className={`text-sm font-medium ${formData.isMember === option ? "text-navy" : "text-navy/40"}`}
+                    >
+                      {option}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Skills/Interests */}
+            <div className="space-y-2">
+              <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                What skills, experience, or interests do you have related to the
+                Trybe? *
+              </label>
+              <textarea
+                required
+                name="skills"
+                rows="3"
+                value={formData.skills}
+                onChange={handleChange}
+                className="w-full bg-navy/5 border-none rounded-3xl p-6 text-navy focus:ring-2 focus:ring-accent transition-all outline-none resize-none"
+                placeholder="Tell us more..."
+              />
+            </div>
+
+            {/* Role in Trybe */}
+            <div className="space-y-4">
+              <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                What would you like to do in a Trybe? *
+              </label>
+              <div className="flex flex-col gap-4">
+                {[
+                  "Join a Trybe",
+                  "Lead a Trybe",
+                  "Join first and lead later",
+                ].map((option) => (
+                  <label
+                    key={option}
+                    className="flex items-center gap-3 cursor-pointer group"
+                  >
+                    <div
+                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all group-hover:border-accent ${formData.roleInterest === option ? "border-accent bg-accent" : ""}`}
+                    >
+                      {formData.roleInterest === option && (
+                        <div className="w-2 h-2 bg-navy rounded-full" />
+                      )}
+                    </div>
+                    <input
+                      required
+                      type="radio"
+                      name="roleInterest"
+                      value={option}
+                      className="hidden"
+                      onChange={handleChange}
+                    />
+                    <span
+                      className={`text-sm font-medium ${formData.roleInterest === option ? "text-navy" : "text-navy/40"}`}
+                    >
+                      {option}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Why Join */}
+            <div className="space-y-2">
+              <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                Why would you like to Join a Trybe? *
+              </label>
+              <textarea
+                required
+                name="reason"
+                rows="3"
+                value={formData.reason}
+                onChange={handleChange}
+                className="w-full bg-navy/5 border-none rounded-3xl p-6 text-navy focus:ring-2 focus:ring-accent transition-all outline-none resize-none"
+                placeholder="Your motivation..."
+              />
+            </div>
+
+            {/* Target Trybe */}
+            <div className="space-y-6">
+              <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
+                Which Trybe would you love to join? *
+              </label>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {trybes.map((trybe) => (
+                  <label
+                    key={trybe}
+                    className="flex flex-col items-center gap-3 cursor-pointer group bg-navy/5 p-6 rounded-2xl hover:bg-navy/10 transition-all border border-transparent hover:border-accent/20"
+                  >
+                    <div
+                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all ${formData.targetTrybe === trybe ? "bg-accent border-accent" : ""}`}
+                    >
+                      {formData.targetTrybe === trybe && (
+                        <div className="w-2 h-2 bg-navy rounded-full" />
+                      )}
+                    </div>
+                    <input
+                      required
+                      type="radio"
+                      name="targetTrybe"
+                      value={trybe}
+                      className="hidden"
+                      onChange={handleChange}
+                    />
+                    <span
+                      className={`text-sm font-bold uppercase tracking-wider ${formData.targetTrybe === trybe ? "text-navy" : "text-navy/40"}`}
+                    >
+                      {trybe}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              className="w-full bg-navy text-white rounded-2xl py-6 font-bold uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 shadow-xl hover:bg-navy/90 transition-all"
+            >
+              Register for Trybe <Send size={18} />
+            </motion.button>
+          </form>
+
+          {/* Background Decorative */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default TrybeFormPage;

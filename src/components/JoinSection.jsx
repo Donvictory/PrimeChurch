@@ -62,7 +62,7 @@ const JoinSection = () => {
               <p className="text-sm md:text-base text-text-muted/80 leading-relaxed font-light">
                 {sections.trybe.description}
               </p>
-              <Link to="/form">
+              <Link to="/trybe-form">
                 <motion.button
                   whileHover={{ gap: "1.5rem" }}
                   className="btn-primary py-3 px-8 text-xs tracking-widest uppercase flex items-center gap-4 transition-all"
