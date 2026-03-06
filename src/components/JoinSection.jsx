@@ -1,6 +1,7 @@
 import React from "react";
 import { sections } from "../data";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const JoinSection = () => {
   return (
@@ -34,13 +35,15 @@ const JoinSection = () => {
               <p>{sections.workforce.description}</p>
               <p>{sections.workforce.description2}</p>
             </div>
-            <motion.button
-              whileHover={{ scale: 1.05, x: 10 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary w-fit px-12 py-5 text-base tracking-wide"
-            >
-              Join the workforce
-            </motion.button>
+            <Link to="/form">
+              <motion.button
+                whileHover={{ scale: 1.05, x: 10 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary w-fit px-12 py-5 text-base tracking-wide"
+              >
+                Join the workforce
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
 
@@ -59,13 +62,15 @@ const JoinSection = () => {
               <p className="text-sm md:text-base text-text-muted/80 leading-relaxed font-light">
                 {sections.trybe.description}
               </p>
-              <motion.button
-                whileHover={{ gap: "1.5rem" }}
-                className="btn-primary py-3 px-8 text-xs tracking-widest uppercase flex items-center gap-4 transition-all"
-              >
-                Join Trybe
-                <span className="text-lg leading-none">→</span>
-              </motion.button>
+              <Link to="/form">
+                <motion.button
+                  whileHover={{ gap: "1.5rem" }}
+                  className="btn-primary py-3 px-8 text-xs tracking-widest uppercase flex items-center gap-4 transition-all"
+                >
+                  Join Trybe
+                  <span className="text-lg leading-none">→</span>
+                </motion.button>
+              </Link>
             </div>
             <div className="order-1 md:order-2 rounded-[2rem] overflow-hidden aspect-[0.9/1] shadow-xl group-hover:scale-[1.05] transition-transform duration-700">
               <img
@@ -97,13 +102,15 @@ const JoinSection = () => {
               <p className="text-sm md:text-base text-text-muted/80 leading-relaxed font-light">
                 {sections.leader.description}
               </p>
-              <motion.button
-                whileHover={{ gap: "1.5rem" }}
-                className="btn-primary py-3 px-8 text-xs tracking-widest uppercase flex items-center gap-4 transition-all"
-              >
-                Become Lead
-                <span className="text-lg leading-none">→</span>
-              </motion.button>
+              <Link to="/form">
+                <motion.button
+                  whileHover={{ gap: "1.5rem" }}
+                  className="btn-primary py-3 px-8 text-xs tracking-widest uppercase flex items-center gap-4 transition-all"
+                >
+                  Become Lead
+                  <span className="text-lg leading-none">→</span>
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Instagram, Mail } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Menu, X, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import churchLogo from "../assets/church-logo.jpg";
 import { socials } from "../data";
@@ -7,6 +8,8 @@ import { socials } from "../data";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +40,13 @@ const Navbar = () => {
     { name: "Events", href: "#events" },
   ];
 
+  const handleLogoClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
       <nav
@@ -55,7 +65,7 @@ const Navbar = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={handleLogoClick}
           >
             <img
               src={churchLogo}
@@ -75,34 +85,6 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <div className="h-4 w-[1px] bg-white/20 mx-2" />
-            <a
-              href={socials.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-70 hover:opacity-100 hover:text-accent transition-all duration-300"
-            >
-              <Instagram size={18} />
-            </a>
-            <a
-              href={socials.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-70 hover:opacity-100 hover:text-accent transition-all duration-300"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                width="18"
-                height="18"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-              </svg>
-            </a>
           </div>
 
           {/* Mobile Toggle Button */}

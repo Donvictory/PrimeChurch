@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Beliefs from "./components/Beliefs";
@@ -8,6 +9,7 @@ import Prayer from "./components/Prayer";
 import Events from "./components/Events";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
+import FormPage from "./components/FormPage";
 import { regions } from "./data";
 
 function App() {
@@ -17,15 +19,23 @@ function App() {
     <div className="bg-bg min-h-screen font-body text-navy overflow-hidden">
       <Navbar activeRegion={activeRegion} />
 
-      <main className="relative">
-        <Hero activeRegion={activeRegion} />
-        <Beliefs />
-        <JoinSection />
-        <Pastors activeRegion={activeRegion} />
-        <Prayer />
-        <Events />
-        <Newsletter />
-      </main>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <main className="relative">
+              <Hero activeRegion={activeRegion} />
+              <Beliefs />
+              <JoinSection />
+              <Pastors activeRegion={activeRegion} />
+              <Prayer />
+              <Events />
+              <Newsletter />
+            </main>
+          }
+        />
+        <Route path="/form" element={<FormPage />} />
+      </Routes>
 
       <Footer />
     </div>
