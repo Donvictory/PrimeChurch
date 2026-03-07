@@ -46,7 +46,8 @@ const Footer = () => {
                 />
               </div>
               <span className="text-base md:text-xl font-body font-normal text-white/70">
-                34, Adeola Hopewell Street, Victoria Island, Lagos.
+                Hall 1, Ozone Cinemas (E-Center), 1–11 Commercial Avenue, Yaba,
+                Lagos.
               </span>
             </motion.div>
 
