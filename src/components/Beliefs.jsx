@@ -49,7 +49,6 @@ const Beliefs = () => {
         </div>
       </div>
 
-      {/* Decorative Blur Circle */}
       <motion.div
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.4, 0.3] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}

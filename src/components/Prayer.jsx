@@ -15,7 +15,6 @@ const Prayer = () => {
         >
           Drop a prayer <br /> request
         </motion.h2>
-
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -25,7 +24,7 @@ const Prayer = () => {
         >
           {prayer.description}
         </motion.p>
-
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -18,6 +18,8 @@ const FormPage = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -36,11 +38,20 @@ const FormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log("Form submitted:", formData);
-    setIsSubmitted(true);
+
+    // Simulate a network request
     setTimeout(() => {
-      navigate("/");
-    }, 5000);
+      window.scrollTo(0, 0);
+      setLoading(false);
+      setIsSubmitted(true);
+
+      // Navigate home after showing success message for 5 seconds
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    }, 2000);
   };
 
   const departments = [
@@ -318,8 +329,10 @@ const FormPage = () => {
               whileTap={{ scale: 0.98 }}
               type="submit"
               className="w-full bg-navy text-white rounded-2xl py-6 font-bold uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 shadow-xl hover:bg-navy/90 transition-all"
+              disabled={loading}
             >
-              Submit Participation <Send size={18} />
+              {loading ? "Submitting..." : "Submit Participation"}{" "}
+              <Send size={18} />
             </motion.button>
           </form>
 

@@ -171,7 +171,7 @@ const Footer = () => {
         <span>Redefining Culture. Restoring Hope.</span>
       </div>
 
-      {/* Decorative Blur Background */}
+       
       <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full blur-[200px] bg-accent/5 z-0 pointer-events-none" />
     </footer>
   );

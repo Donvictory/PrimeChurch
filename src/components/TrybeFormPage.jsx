@@ -18,6 +18,7 @@ const TrybeFormPage = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -30,11 +31,20 @@ const TrybeFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log("Trybe Form submitted:", formData);
-    setIsSubmitted(true);
+
+    // Simulate a network request
     setTimeout(() => {
-      navigate("/");
-    }, 5000);
+      window.scrollTo(0, 0);
+      setLoading(false);
+      setIsSubmitted(true);
+
+      // Navigate home after showing success message for 5 seconds
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    }, 2000);
   };
 
   const trybes = ["Tech", "Career", "Creative", "Entrepreneur"];
@@ -340,10 +350,12 @@ const TrybeFormPage = () => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              disabled={loading}
               type="submit"
               className="w-full bg-navy text-white rounded-2xl py-6 font-bold uppercase tracking-[0.2em] text-sm flex items-center justify-center gap-3 shadow-xl hover:bg-navy/90 transition-all"
             >
-              Register for Trybe <Send size={18} />
+              {loading ? "Registering..." : "Register for Trybe"}{" "}
+              <Send size={18} />
             </motion.button>
           </form>
 
