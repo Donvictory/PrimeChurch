@@ -1,7 +1,7 @@
 import pastor1 from "./assets/pastor-image1.jpeg";
 import pastor2 from "./assets/pastor-image2.jpeg";
 import godFirstImg from "./assets/god-first-devotion.jpg";
-
+import bibleStudyImg from "./assets/bible-study.jpeg";
 export const regions = [
   {
     id: "community",
@@ -76,16 +76,28 @@ export const prayer = {
 
 export const events = {
   title: "Some of our events.",
-  currentEvent: {
-    tag: "Daily Devotion · 6am",
-    title: "START YOUR DAY WITH JESUS",
-    subtitle: "God First Everyday Devotion",
-    description:
-      "Join us every morning for God First Everyday Devotion by 6am. A time of prayers, word and daily confessions. Build a habit of starting your day with God.",
-    cta: "Do well to join us by using the link below.",
-    meetLink: "https://meet.google.com/hbq-zoun-wdc",
-    image: godFirstImg,
-  },
+  eventList: [
+    {
+      tag: "Daily Devotion · 6am",
+      title: "START YOUR DAY WITH JESUS",
+      subtitle: "God First Everyday Devotion",
+      description:
+        "Join us every morning for God First Everyday Devotion by 6am. A time of prayers, word and daily confessions. Build a habit of starting your day with God.",
+      cta: "Do well to join us by using the link below.",
+      meetLink: "https://meet.google.com/hbq-zoun-wdc",
+      image: godFirstImg,
+    },
+    {
+      tag: "Bible Study · 7:30 pm",
+      title: "BIBLE STUDY",
+      subtitle: "Come dissect the word with us",
+      description:
+        "Join us every Tuesday evening to study the word of God, study to show thyself approved. Come dissect the word with us.\n\nTag your friends @all and be a part of this moment.",
+      cta: "TIME : 7:30 pm | Venue: Google meet",
+      meetLink: "https://meet.google.com/qkn-nnpk-geb",
+      image: bibleStudyImg,
+    },
+  ],
 };
 
 export const socials = {

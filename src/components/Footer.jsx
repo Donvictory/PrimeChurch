@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Instagram,
   Facebook,
@@ -6,12 +6,24 @@ import {
   Mail,
   Phone,
   MapPin,
+  X,
+  Copy,
+  Check,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import churchLogo from "../assets/church-logo.jpg";
 import { socials } from "../data";
 
 const Footer = () => {
+  const [isGiveModalOpen, setIsGiveModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("0085371429");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <footer className="footer bg-navy text-white py-24 md:py-48 px-4 md:px-16 border-t border-white/5 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.5fr_1fr_1fr] md:grid-cols-2 gap-24 relative z-10">
@@ -154,6 +166,7 @@ const Footer = () => {
             Support our global mission and ministry with a heart of excellence.
           </p>
           <motion.button
+            onClick={() => setIsGiveModalOpen(true)}
             whileHover={{
               scale: 1.05,
               backgroundColor: "#E8DCC4",
@@ -166,13 +179,106 @@ const Footer = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto border-t border-white/5 mt-32 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-[4px] text-white/20 relative z-10">
+      {/* <div className="max-w-[1400px] mx-auto border-t border-white/5 mt-32 pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-[4px] text-white/20 relative z-10">
         <span>© 2026 Prime Church. Built with Excellence.</span>
         <span>Redefining Culture. Restoring Hope.</span>
-      </div>
+      </div> */}
 
-       
       <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] rounded-full blur-[200px] bg-accent/5 z-0 pointer-events-none" />
+
+      <AnimatePresence>
+        {isGiveModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-navy/80 backdrop-blur-md"
+            onClick={() => setIsGiveModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-white text-navy p-8 md:p-12 rounded-[2rem] shadow-2xl max-w-lg w-full relative overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsGiveModalOpen(false)}
+                className="absolute top-6 right-6 p-2 rounded-full hover:bg-black/5 transition-colors"
+                title="Close"
+              >
+                <X size={24} className="text-navy/50 hover:text-navy" />
+              </button>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-3xl font-heading font-bold text-navy tracking-tight mb-2">
+                    Give Globally
+                  </h3>
+                  <p className="text-navy/60 font-body text-base">
+                    Partner with us in our global mission.
+                  </p>
+                </div>
+
+                <div className="bg-[#f8f9fa] p-6 rounded-2xl relative border border-navy/5 group hover:border-navy/10 transition-colors">
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-xs font-bold tracking-widest uppercase text-navy/40 mb-1">
+                        Account Name
+                      </p>
+                      <p className="text-lg font-bold text-navy">
+                        HARVESTERS INT'L CHRISTIAN-COLLEGE
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold tracking-widest uppercase text-navy/40 mb-1">
+                        Bank
+                      </p>
+                      <p className="text-lg font-bold text-navy">
+                        Sterling Bank
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold tracking-widest uppercase text-navy/40 mb-1">
+                        Account Number
+                      </p>
+                      <div className="flex items-center justify-between gap-3 bg-white p-3 md:p-4 rounded-xl shadow-sm border border-black/5">
+                        <p className="text-2xl md:text-3xl font-heading font-bold text-navy tracking-wider">
+                          0085371429
+                        </p>
+                        <button
+                          onClick={handleCopy}
+                          className="p-3 rounded-full bg-navy/5 hover:bg-navy/10 transition-colors text-navy flex items-center justify-center group/btn"
+                          title="Copy Account Number"
+                        >
+                          {copied ? (
+                            <Check size={20} className="text-green-600" />
+                          ) : (
+                            <Copy
+                              size={20}
+                              className="group-hover/btn:scale-110 transition-transform"
+                            />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    onClick={() => setIsGiveModalOpen(false)}
+                    className="w-full py-4 rounded-xl bg-navy text-accent font-bold tracking-widest uppercase text-sm hover:brightness-110 transition-all shadow-lg shadow-navy/20"
+                  >
+                    Done
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };
