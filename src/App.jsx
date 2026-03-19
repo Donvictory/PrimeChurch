@@ -11,6 +11,8 @@ import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 import FormPage from "./components/FormPage";
 import TrybeFormPage from "./components/TrybeFormPage";
+import PrayerRequestPage from "./components/PrayerRequestPage";
+import MandatePage from "./components/MandatePage";
 import { regions } from "./data";
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         />
         <Route path="/form" element={<FormPage />} />
         <Route path="/trybe-form" element={<TrybeFormPage />} />
+        <Route path="/prayer-request" element={<PrayerRequestPage />} />
+        <Route path="/mandate" element={<MandatePage />} />
       </Routes>
 
       <Footer />

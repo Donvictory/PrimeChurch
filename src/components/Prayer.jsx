@@ -1,8 +1,15 @@
 import React from "react";
 import { prayer } from "../data";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Prayer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <section className="bg-navy py-24 md:py-48 px-4 md:px-16 text-center relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto relative z-10 space-y-12 md:space-y-20 flex flex-col items-center">
@@ -24,7 +31,7 @@ const Prayer = () => {
         >
           {prayer.description}
         </motion.p>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,16 +39,19 @@ const Prayer = () => {
           transition={{ duration: 1.0, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-8 justify-center w-full max-w-[600px]"
         >
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(255, 255, 255, 0.1)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary bg-white text-navy border-none py-5 px-16 text-sm font-bold tracking-[2px] uppercase shadow-2xl transition-all"
-          >
-            Submit Request
-          </motion.button>
+          <Link to="/prayer-request">
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 20px 40px rgba(255, 255, 255, 0.1)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary bg-white text-navy border-none py-5 px-16 text-sm font-bold tracking-[2px] uppercase shadow-2xl transition-all"
+              onClick={scrollToTop}
+            >
+              Submit Request
+            </motion.button>
+          </Link>
           <motion.button
             whileHover={{
               scale: 1.05,

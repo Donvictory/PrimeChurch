@@ -5,28 +5,28 @@ import bibleStudyImg from "./assets/bible-study.jpeg";
 export const regions = [
   {
     id: "community",
-    name: "Prime Church",
+    name: "The Prime Church",
     hero: {
-      title: "This is Prime Church.",
+      title: "This is The Prime Church.",
       subtitle:
-        "Prime Church is a new generation expression of Ministers Fellowship Christian Center with a mandate to redefine the church culture in ways that we find ourselves.",
+        "The Prime Church is a new generation expression of Ministers Fellowship Christian Center with a mandate to redefine the church culture in ways that we find ourselves.",
       imageUrl:
         "https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&q=80&w=1200",
     },
     pastors: [
-      {
-        name: "Psr. Opeyemi Adetomiwa",
-        role: "Pastor",
-        description:
-          "Pastor Opeyemi is a pragmatic teacher of the word at Prime Church. He is passionate about the young generation and that he co-leads both in the corporate space and in the ministry.",
-        imageUrl: pastor2,
-      },
       {
         name: "Psr. Tim Durotinu",
         role: "Pastor",
         description:
           "Pastor Tim is an existence coach and a pastor at Prime Church. He is driven by the passion to ensure spiritual and emotional healing in the lives of all who listen/sit under him.",
         imageUrl: pastor1,
+      },
+      {
+        name: "Psr. Opeyemi Adetomiwa",
+        role: "Pastor",
+        description:
+          "Pastor Opeyemi is a pragmatic teacher of the word at Prime Church. He is passionate about the young generation and that he co-leads both in the corporate space and in the ministry.",
+        imageUrl: pastor2,
       },
     ],
   },
