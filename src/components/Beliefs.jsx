@@ -6,9 +6,9 @@ const Beliefs = () => {
   return (
     <section
       id="about"
-      className="py-24 md:py-48 px-4 md:px-16 bg-bg text-navy relative overflow-hidden"
+      className="py-10 md:py-24 px-4 md:px-16 bg-bg text-navy relative overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-24 items-start relative z-10">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 items-start relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}

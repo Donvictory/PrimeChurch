@@ -51,12 +51,12 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ease-in-out
-          ${isScrolled || isMobileMenuOpen ? "py-4" : "py-8"}`}
+          ${isScrolled || isMobileMenuOpen ? "py-4" : "py-4"}`}
       >
         {/* Background Layer */}
         <div
           className={`absolute inset-0 transition-all duration-500 ease-in-out -z-10
-            ${isScrolled || isMobileMenuOpen ? "bg-navy/95 backdrop-blur-xl border-b border-white/10 opacity-100" : "bg-transparent opacity-0"}`}
+            ${isScrolled || isMobileMenuOpen || location.pathname !== "/" ? "bg-navy/95 backdrop-blur-xl border-b border-white/10 opacity-100" : "bg-transparent opacity-0"}`}
         />
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center text-white relative z-[1002]">
@@ -67,11 +67,34 @@ const Navbar = () => {
             className="cursor-pointer"
             onClick={handleLogoClick}
           >
-            <img
-              src={churchLogo}
-              alt="The Prime Church Logo"
-              className="h-10 md:h-12 w-auto object-contain"
-            />
+            {["/mandate", "/form", "/trybe-form"].includes(
+              location.pathname,
+            ) ? (
+              <div className="inline-flex items-center gap-2 text-white font-bold hover:text-accent transition-all bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full shadow-md border border-white/20 hover:border-accent/50">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  ></path>
+                </svg>
+                <span className="hidden sm:inline">Back to Home</span>
+                <span className="sm:hidden">Back</span>
+              </div>
+            ) : (
+              <img
+                src={churchLogo}
+                alt="The Prime Church Logo"
+                className="h-10 md:h-12 w-auto object-contain"
+              />
+            )}
           </motion.div>
 
           {/* Desktop Menu */}

@@ -1,17 +1,37 @@
-import React from "react";
-import { Video } from "lucide-react";
+import React, { useRef } from "react";
+import { Video, ChevronLeft, ChevronRight } from "lucide-react";
 import { events } from "../data";
 import { motion } from "framer-motion";
 
 const Events = () => {
+  const sliderRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({
+        left: -window.innerWidth * 0.8,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({
+        left: window.innerWidth * 0.8,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
       id="events"
-      className="bg-bg py-24 md:py-48 px-4 md:px-16 overflow-hidden"
+      className="bg-bg py-10 md:py-24 px-4 md:px-16 overflow-hidden "
     >
       <div className="max-w-[1400px] mx-auto">
         {/* Section Header */}
-        <header className="mb-16 md:mb-24">
+        <header className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -24,11 +44,37 @@ const Events = () => {
             </h2>
             <div className="h-[2px] w-24 bg-navy/20" />
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.0 }}
+            className="flex gap-4"
+          >
+            <button
+              onClick={scrollLeft}
+              className="p-4 rounded-full border border-navy/20 text-navy hover:bg-navy hover:text-white transition-colors cursor-pointer"
+              aria-label="Previous event"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={scrollRight}
+              className="p-4 rounded-full border border-navy/20 text-navy hover:bg-navy hover:text-white transition-colors cursor-pointer"
+              aria-label="Next event"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </motion.div>
         </header>
       </div>
 
       {/* Event Cards */}
-      <div className="flex flex-col gap-12 md:gap-24">
+      <div
+        ref={sliderRef}
+        className="flex overflow-x-auto gap-6 md:gap-12 snap-x snap-mandatory no-scrollbar pb-12 w-full max-w-[1400px] mx-auto"
+      >
         {events.eventList.map((eventItem, index) => (
           <motion.div
             key={index}
@@ -36,7 +82,7 @@ const Events = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
-            className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] bg-white rounded-[3rem] md:rounded-[5rem] overflow-hidden shadow-2xl shadow-navy/10 min-h-[680px] group"
+            className="w-[90vw] md:w-[85vw] lg:w-[80vw] shrink-0 snap-center grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] bg-white rounded-[3rem] md:rounded-[5rem] overflow-hidden min-h-[680px] group shadow-2xl shadow-navy/10"
           >
             {/* Left: Image */}
             <div className="relative overflow-hidden min-h-[400px] lg:min-h-0">

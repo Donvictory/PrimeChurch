@@ -100,15 +100,6 @@ const FormPage = () => {
   return (
     <div className="min-h-screen bg-bg py-24 md:py-32 px-4 md:px-16">
       <div className="max-w-3xl mx-auto">
-        <motion.button
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          onClick={() => navigate("/")}
-          className="flex items-center gap-2 text-navy/40 hover:text-navy transition-colors mb-12 uppercase tracking-widest text-[10px] font-bold"
-        >
-          <ArrowLeft size={14} /> Back
-        </motion.button>
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

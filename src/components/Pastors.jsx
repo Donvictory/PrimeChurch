@@ -5,9 +5,9 @@ const Pastors = ({ activeRegion }) => {
   return (
     <section
       id="pastors"
-      className="bg-navy py-24 md:py-48 px-4 md:px-16 text-white overflow-hidden relative"
+      className="bg-navy py-10 md:py-24 px-4 md:px-16 text-white overflow-hidden relative"
     >
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[0.8fr_2fr] gap-24 relative z-10">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[0.8fr_2fr] gap-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

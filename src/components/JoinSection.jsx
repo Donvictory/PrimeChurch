@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const JoinSection = () => {
   return (
-    <section className="bg-bg py-24 md:py-48 px-4 md:px-16 overflow-hidden">
+    <section className="bg-bg py-10 md:py-24 px-4 md:px-16 overflow-hidden ">
       <div className="max-w-[1400px] mx-auto">
         {/* Workforce Section */}
         <motion.div
@@ -13,7 +13,7 @@ const JoinSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.0 }}
-          className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] md:grid-cols-1 gap-12 lg:gap-32 items-center mb-48 bg-white p-6 md:p-20 rounded-[3rem] md:rounded-[5rem] shadow-2xl shadow-navy/5 overflow-hidden"
+          className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] md:grid-cols-1 gap-12 lg:gap-32 items-center mb-15 bg-white p-6 md:p-20 rounded-[3rem] md:rounded-[5rem] shadow-2xl shadow-navy/5 overflow-hidden"
         >
           <motion.div
             whileHover={{ scale: 1.02 }}
