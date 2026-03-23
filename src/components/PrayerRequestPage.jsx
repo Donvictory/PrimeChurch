@@ -6,19 +6,39 @@ const PrayerRequestPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    request: "",
+    prayerRequest: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.request.trim() === "") return;
-    setSubmitted(true);
-    // Submit logic would go here
+    if (formData.prayerRequest.trim() === "") return;
+
+    try {
+      setLoading(true);
+      const response = await fetch(
+        "https://faithcare-backend.vercel.app/api/v1/prime/prayer-request",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -30,28 +50,7 @@ const PrayerRequestPage = () => {
         className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[100px] bg-accent/30 pointer-events-none"
       />
 
-      <div className="w-full max-w-[800px] mb-6 relative z-[50]">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-navy font-bold hover:text-accent transition-all bg-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg border border-gray-100 cursor-pointer"
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            ></path>
-          </svg>
-          Back to Home
-        </Link>
-      </div>
+
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -113,15 +112,15 @@ const PrayerRequestPage = () => {
 
               <div className="flex flex-col">
                 <label
-                  htmlFor="request"
+                  htmlFor="prayerRequest"
                   className="text-sm font-semibold text-navy mb-2"
                 >
                   Your Prayer Request
                 </label>
                 <textarea
-                  id="request"
-                  name="request"
-                  value={formData.request}
+                  id="prayerRequest"
+                  name="prayerRequest"
+                  value={formData.prayerRequest}
                   onChange={handleChange}
                   rows="6"
                   className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-6 py-4 outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all text-navy resize-none"
@@ -134,9 +133,14 @@ const PrayerRequestPage = () => {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-navy text-white text-lg font-bold py-5 rounded-full shadow-lg hover:shadow-xl transition-all uppercase tracking-wider mt-4"
+                className="w-full bg-navy text-white text-lg font-bold py-5 rounded-full shadow-lg hover:shadow-xl transition-all uppercase tracking-wider mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={loading || submitted}
               >
-                Submit Prayer Request
+                {loading
+                  ? "Submitting..."
+                  : submitted
+                    ? "Submitted"
+                    : "Submit Prayer Request"}
               </motion.button>
             </form>
           </div>

@@ -7,13 +7,13 @@ const TrybeFormPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
+    phoneNumber: "",
     email: "",
     gender: "",
-    isMember: "",
+    isAMember: "",
     skills: "",
-    roleInterest: "",
-    reason: "",
+    whatWouldYouLikeToDo: "",
+    whyWouldYouLikeToJoin: "",
     targetTrybe: "",
   });
 
@@ -29,9 +29,59 @@ const TrybeFormPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
+    const genderMap = {
+      "Male": "MALE",
+      "Female": "FEMALE"
+    };
+    
+    const memberMap = {
+      "Yes": "YES",
+      "No": "NO",
+      "New member": "NEW_MEMBER"
+    };
+    
+    const actionMap = {
+      "Join a Trybe": "JOIN",
+      "Lead a Trybe": "LEAD",
+      "Join first and lead later": "JOIN_FIRST"
+    };
+
+    const payload = {
+      name: formData.name,
+      phoneNumber: formData.phoneNumber,
+      email: formData.email,
+      gender: genderMap[formData.gender] || "",
+      isAMember: memberMap[formData.isAMember] || "",
+      skills: formData.skills,
+      whatWouldYouLikeToDo: actionMap[formData.whatWouldYouLikeToDo] || "",
+      whyWouldYouLikeToJoin: formData.whyWouldYouLikeToJoin,
+      whichTrybeCategoryToJoin: formData.targetTrybe ? formData.targetTrybe.toUpperCase() : ""
+    };
+
+    try {
+      setLoading(true);
+      const response = await fetch(
+        "https://faithcare-backend.vercel.app/api/v1/prime/trybe",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+
     console.log("Trybe Form submitted:", formData);
 
     // Simulate a network request
@@ -131,9 +181,9 @@ const TrybeFormPage = () => {
                 </label>
                 <input
                   required
-                  name="phone"
+                  name="phoneNumber"
                   type="tel"
-                  value={formData.phone}
+                  value={formData.phoneNumber}
                   onChange={handleChange}
                   className="w-full bg-navy/5 border-none rounded-2xl p-5 text-navy focus:ring-2 focus:ring-accent transition-all outline-none"
                   placeholder="+234..."
@@ -205,22 +255,22 @@ const TrybeFormPage = () => {
                     className="flex items-center gap-3 cursor-pointer group"
                   >
                     <div
-                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all group-hover:border-accent ${formData.isMember === option ? "border-accent bg-accent" : ""}`}
+                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all group-hover:border-accent ${formData.isAMember === option ? "border-accent bg-accent" : ""}`}
                     >
-                      {formData.isMember === option && (
+                      {formData.isAMember === option && (
                         <div className="w-2 h-2 bg-navy rounded-full" />
                       )}
                     </div>
                     <input
                       required
                       type="radio"
-                      name="isMember"
+                      name="isAMember"
                       value={option}
                       className="hidden"
                       onChange={handleChange}
                     />
                     <span
-                      className={`text-sm font-medium ${formData.isMember === option ? "text-navy" : "text-navy/40"}`}
+                      className={`text-sm font-medium ${formData.isAMember === option ? "text-navy" : "text-navy/40"}`}
                     >
                       {option}
                     </span>
@@ -262,22 +312,22 @@ const TrybeFormPage = () => {
                     className="flex items-center gap-3 cursor-pointer group"
                   >
                     <div
-                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all group-hover:border-accent ${formData.roleInterest === option ? "border-accent bg-accent" : ""}`}
+                      className={`w-6 h-6 rounded-full border-2 border-navy/10 flex items-center justify-center transition-all group-hover:border-accent ${formData.whatWouldYouLikeToDo === option ? "border-accent bg-accent" : ""}`}
                     >
-                      {formData.roleInterest === option && (
+                      {formData.whatWouldYouLikeToDo === option && (
                         <div className="w-2 h-2 bg-navy rounded-full" />
                       )}
                     </div>
                     <input
                       required
                       type="radio"
-                      name="roleInterest"
+                      name="whatWouldYouLikeToDo"
                       value={option}
                       className="hidden"
                       onChange={handleChange}
                     />
                     <span
-                      className={`text-sm font-medium ${formData.roleInterest === option ? "text-navy" : "text-navy/40"}`}
+                      className={`text-sm font-medium ${formData.whatWouldYouLikeToDo === option ? "text-navy" : "text-navy/40"}`}
                     >
                       {option}
                     </span>
@@ -293,9 +343,9 @@ const TrybeFormPage = () => {
               </label>
               <textarea
                 required
-                name="reason"
+                name="whyWouldYouLikeToJoin"
                 rows="3"
-                value={formData.reason}
+                value={formData.whyWouldYouLikeToJoin}
                 onChange={handleChange}
                 className="w-full bg-navy/5 border-none rounded-3xl p-6 text-navy focus:ring-2 focus:ring-accent transition-all outline-none resize-none"
                 placeholder="Your motivation..."

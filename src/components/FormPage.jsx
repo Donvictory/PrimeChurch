@@ -36,9 +36,51 @@ const FormPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
+    const deptMap = {
+      "Soundtrybe": "SOUND_TRYBE",
+      "Ushering/greeters/protocol": "USHERING/GREETERS/PROTOCOL",
+      "Prayer/bible study": "PRAYER/BIBLE_STUDY",
+      "Publicity/ outreach": "PUBLICITY/OUTREACH",
+      "Programs": "PROGRAMS",
+      "Media/ technical": "MEDIA/TECHNICAL",
+      "Programs/venue management": "PROGRAMS/VENUE_MANAGEMENT",
+      "Membership": "MEMBERSHIP",
+      "Welfare/hospitality": "WELFARE/HOSPITALITY",
+    };
+
+    const payload = {
+      fullName: formData.fullName,
+      phoneNumber: formData.phone,
+      email: formData.email,
+      gender: formData.gender ? formData.gender.toUpperCase() : "",
+      address: formData.address,
+      haveServedInADepartment: formData.servedBefore === "Yes",
+      previousDepartmentServed: formData.previousDepartment || "",
+      departmentToServeIn: formData.targetDepartments.map(d => deptMap[d]).filter(Boolean),
+    };
+
+    try {
+      setLoading(true);
+      const response = await fetch(
+        "https://faithcare-backend.vercel.app/api/v1/prime/workforce",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error(error);
+    }
+
     console.log("Form submitted:", formData);
 
     // Simulate a network request

@@ -67,7 +67,7 @@ const Navbar = () => {
             className="cursor-pointer"
             onClick={handleLogoClick}
           >
-            {["/mandate", "/form", "/trybe-form"].includes(
+            {["/mandate", "/form", "/trybe-form", "/prayer-request"].includes(
               location.pathname,
             ) ? (
               <div className="inline-flex items-center gap-2 text-white font-bold hover:text-accent transition-all bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full shadow-md border border-white/20 hover:border-accent/50">

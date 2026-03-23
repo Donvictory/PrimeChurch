@@ -3,21 +3,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Hero = ({ activeRegion }) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
   const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
     const targetHour = 10;
-    
+
     const calculateTimeLeft = () => {
       const now = new Date();
-      if (now.getDay() === 0 && now.getHours() >= targetHour && now.getHours() < 13) {
+      if (
+        now.getDay() === 0 &&
+        now.getHours() >= targetHour &&
+        now.getHours() < 13
+      ) {
         return null;
       }
-      
+
       let nextSunday = new Date();
       const daysUntilSunday = (7 - now.getDay()) % 7;
-      
+
       if (daysUntilSunday === 0 && now.getHours() >= 13) {
         nextSunday.setDate(now.getDate() + 7);
       } else {
@@ -26,7 +35,7 @@ const Hero = ({ activeRegion }) => {
       nextSunday.setHours(targetHour, 0, 0, 0);
 
       const difference = nextSunday.getTime() - now.getTime();
-      
+
       if (difference > 0) {
         return {
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -103,6 +112,7 @@ const Hero = ({ activeRegion }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-navy px-12 py-4 rounded-full font-semibold text-base shadow-2xl transition-all h-full"
+                onClick={() => window.scroll({ top: 0, behavior: "smooth" })}
               >
                 Our Mandate
               </motion.button>
@@ -112,32 +122,54 @@ const Hero = ({ activeRegion }) => {
               whileTap={isLive ? { scale: 0.95 } : {}}
               disabled={!isLive}
               className={`border-2 px-12 py-4 rounded-full font-semibold text-base backdrop-blur-md transition-all
-                ${isLive ? 'bg-accent/80 border-accent text-white hover:bg-accent' : 'bg-transparent border-white/30 text-white/50 cursor-not-allowed'}
+                ${isLive ? "bg-accent/80 border-accent text-white hover:bg-accent" : "bg-transparent border-white/30 text-white/50 cursor-not-allowed"}
               `}
             >
               {isLive ? "Watch Live Now" : "Watch Live"}
             </motion.button>
-            
+
             {!isLive && (
               <div className="flex gap-4 ml-0 sm:ml-4 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
                 <div className="flex flex-col items-center justify-center">
-                  <span className="text-white font-bold text-xl font-heading leading-none">{String(timeLeft.days).padStart(2, '0')}</span>
-                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">Days</span>
+                  <span className="text-white font-bold text-xl font-heading leading-none">
+                    {String(timeLeft.days).padStart(2, "0")}
+                  </span>
+                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">
+                    Days
+                  </span>
                 </div>
-                <span className="text-white text-xl font-heading leading-none">:</span>
+                <span className="text-white text-xl font-heading leading-none">
+                  :
+                </span>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="text-white font-bold text-xl font-heading leading-none">{String(timeLeft.hours).padStart(2, '0')}</span>
-                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">Hrs</span>
+                  <span className="text-white font-bold text-xl font-heading leading-none">
+                    {String(timeLeft.hours).padStart(2, "0")}
+                  </span>
+                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">
+                    Hrs
+                  </span>
                 </div>
-                <span className="text-white text-xl font-heading leading-none">:</span>
+                <span className="text-white text-xl font-heading leading-none">
+                  :
+                </span>
                 <div className="flex flex-col items-center justify-center">
-                  <span className="text-white font-bold text-xl font-heading leading-none">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">Mins</span>
+                  <span className="text-white font-bold text-xl font-heading leading-none">
+                    {String(timeLeft.minutes).padStart(2, "0")}
+                  </span>
+                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">
+                    Mins
+                  </span>
                 </div>
-                <span className="text-white text-xl font-heading leading-none">:</span>
+                <span className="text-white text-xl font-heading leading-none">
+                  :
+                </span>
                 <div className="flex flex-col items-center justify-center min-w-[32px]">
-                  <span className="text-white font-bold text-xl font-heading leading-none">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">Secs</span>
+                  <span className="text-white font-bold text-xl font-heading leading-none">
+                    {String(timeLeft.seconds).padStart(2, "0")}
+                  </span>
+                  <span className="text-white/80 text-[10px] uppercase font-bold tracking-wider">
+                    Secs
+                  </span>
                 </div>
               </div>
             )}
