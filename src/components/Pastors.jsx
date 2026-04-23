@@ -37,9 +37,9 @@ const Pastors = ({ activeRegion }) => {
               className="group"
             >
               <motion.div
-                whileHover={{ scale: 1.05, rotate: -2 }}
+                whileHover={{ scale: 1.0, rotate: -2 }}
                 transition={{ duration: 0.5 }}
-                className="aspect-square rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-12 shadow-2xl shadow-black/40 border border-white/5 relative bg-white/5"
+                className="aspect-square rounded-[1rem] md:rounded-[1rem] overflow-hidden mb-12 shadow-2xl shadow-black/40 border border-white/5 relative bg-white/5"
               >
                 <img
                   src={pastor.imageUrl}

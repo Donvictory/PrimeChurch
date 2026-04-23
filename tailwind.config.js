@@ -13,9 +13,10 @@ export default {
         "text-muted": "#555555",
       },
       fontFamily: {
-        heading: ['"Playfair Display"', "serif"],
-        body: ["Outfit", "sans-serif"],
-        accent: ["Literata", "serif"],
+        sans: ['"League Spartan"', "sans-serif"],
+        heading: ['"League Spartan"', "sans-serif"],
+        body: ['"League Spartan"', "sans-serif"],
+        accent: ['"League Spartan"', "sans-serif"],
       },
       spacing: {
         section: "8rem",

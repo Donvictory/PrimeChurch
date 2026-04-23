@@ -46,12 +46,12 @@ const MandatePage = () => {
       <motion.div
         animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-accent rounded-full blur-[150px] opacity-40 pointer-events-none"
+        className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-accent rounded-[1rem] md:rounded-[1.2rem] blur-[150px] opacity-40 pointer-events-none"
       />
       <motion.div
         animate={{ scale: [1, 1.1, 1], rotate: [0, -5, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-navy/10 rounded-full blur-[150px] opacity-40 pointer-events-none"
+        className="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-navy/10 rounded-[1rem] md:rounded-[1.2rem] blur-[150px] opacity-40 pointer-events-none"
       />
 
       <motion.div
@@ -76,12 +76,11 @@ const MandatePage = () => {
             whileHover={{ scale: 1.02 }}
             className="lg:w-1/2 relative group"
           >
-            <div className="absolute -inset-2 bg-gradient-to-r from-accent via-white to-accent rounded-[3rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-500"></div>
-            <div className="relative bg-white border border-navy/10 p-10 md:p-14 rounded-[3rem] h-full flex flex-col justify-center overflow-hidden shadow-2xl shadow-navy/5">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/30 blur-3xl rounded-full"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-accent via-white to-accent rounded-[1rem] md:rounded-[1.2rem] blur-xl opacity-50 group-hover:opacity-100 transition duration-500"></div>
+            <div className="relative bg-white border border-navy/10 p-10 md:p-14 rounded-[1rem] md:rounded-[1.2rem] h-full flex flex-col justify-center overflow-hidden shadow-2xl shadow-navy/5">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/30 blur-3xl rounded-[1rem] md:rounded-[1.2rem]"></div>
 
               <h2 className="text-2xl md:text-3xl font-bold font-heading mb-6 flex items-center gap-4 text-navy">
-                {/* <span className="w-12 h-1 bg-navy inline-block rounded-full"></span> */}
                 Our Brand Promise
               </h2>
               <p className="text-2xl md:text-4xl font-light leading-snug text-navy tracking-wide">
@@ -95,7 +94,6 @@ const MandatePage = () => {
           </motion.div>
         </div>
 
-        {/* Middle Strategy Description */}
         <motion.div
           variants={itemVariants}
           className="text-center max-w-[900px] mx-auto my-8"
@@ -107,16 +105,14 @@ const MandatePage = () => {
           </p>
         </motion.div>
 
-        {/* Pillars Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {pillars.map((pillar, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="group bg-white shadow-xl shadow-navy/5 border border-transparent hover:border-accent/50 p-8 md:p-10 rounded-[2.5rem] transition-all flex flex-col relative overflow-hidden"
+              className="group bg-white shadow-xl shadow-navy/5 border border-transparent hover:border-accent/50 p-8 md:p-10 rounded-[1rem] md:rounded-[1.2rem] transition-all flex flex-col relative overflow-hidden"
             >
-              {/* Subtle hover background effect */}
               <div className="absolute inset-0 bg-navy/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
               <div className="text-5xl mb-6">{pillar.icon}</div>

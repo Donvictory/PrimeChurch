@@ -13,12 +13,12 @@ const JoinSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.0 }}
-          className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] md:grid-cols-1 gap-12 lg:gap-32 items-center mb-15 bg-white p-6 md:p-20 rounded-[3rem] md:rounded-[5rem] shadow-2xl shadow-navy/5 overflow-hidden"
+          className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] md:grid-cols-1 gap-12 lg:gap-32 items-center mb-15 bg-white p-6 md:p-20 rounded-[1rem] md:rounded-[2rem] shadow-2xl shadow-navy/5 overflow-hidden"
         >
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.6 }}
-            className="rounded-[2.5rem] md:rounded-[4rem] overflow-hidden aspect-[1.2/1] shadow-2xl shadow-navy/20 relative cursor-pointer"
+            className="rounded-[1rem] md:rounded-[1.2rem] overflow-hidden aspect-[1.2/1] shadow-2xl shadow-navy/20 relative cursor-pointer"
           >
             <img
               src={sections.workforce.imageUrl}
@@ -53,7 +53,7 @@ const JoinSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.0 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-12 rounded-[3.5rem] shadow-xl shadow-navy/5 hover:translate-y-[-10px] transition-transform duration-500 group"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-12 rounded-[1rem] md:rounded-[1.2rem] shadow-xl shadow-navy/5 hover:translate-y-[-10px] transition-transform duration-500 group"
           >
             <div className="order-2 md:order-1 space-y-6">
               <h3 className="text-3xl md:text-5xl font-heading font-bold text-navy tracking-tight">
@@ -72,7 +72,7 @@ const JoinSection = () => {
                 </motion.button>
               </Link>
             </div>
-            <div className="order-1 md:order-2 rounded-[2rem] overflow-hidden aspect-[0.9/1] shadow-xl group-hover:scale-[1.05] transition-transform duration-700">
+            <div className="order-1 md:order-2 rounded-[1rem] md:rounded-[1.rem] overflow-hidden aspect-[0.9/1] shadow-xl group-hover:scale-[1.05] transition-transform duration-700">
               <img
                 src={sections.trybe.imageUrl}
                 alt="Trybe"
@@ -86,9 +86,9 @@ const JoinSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.0 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-12 rounded-[3.5rem] shadow-xl shadow-navy/5 hover:translate-y-[-10px] transition-transform duration-500 group"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-8 md:p-12 rounded-[1rem] md:rounded-[1.2rem] shadow-xl shadow-navy/5 hover:translate-y-[-10px] transition-transform duration-500 group"
           >
-            <div className="rounded-[2rem] overflow-hidden aspect-[0.9/1] shadow-xl group-hover:scale-[1.02] transition-transform duration-700">
+            <div className="rounded-[1rem] md:rounded-[1.rem] overflow-hidden aspect-[0.9/1] shadow-xl group-hover:scale-[1.02] transition-transform duration-700">
               <img
                 src={sections.leader.imageUrl}
                 alt="Leader"

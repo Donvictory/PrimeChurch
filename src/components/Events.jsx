@@ -82,7 +82,7 @@ const Events = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
-            className="w-[90vw] md:w-[85vw] lg:w-[80vw] shrink-0 snap-center grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] bg-white rounded-[3rem] md:rounded-[5rem] overflow-hidden min-h-[680px] group shadow-2xl shadow-navy/10"
+            className="w-[90vw] md:w-[85vw] lg:w-[80vw] shrink-0 snap-center grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] bg-white rounded-[1rem] md:rounded-[2rem] overflow-hidden min-h-[680px] group shadow-2xl shadow-navy/10"
           >
             {/* Left: Image */}
             <div className="relative overflow-hidden min-h-[400px] lg:min-h-0">

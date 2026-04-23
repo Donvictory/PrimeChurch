@@ -47,16 +47,14 @@ const PrayerRequestPage = () => {
       <motion.div
         animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[100px] bg-accent/30 pointer-events-none"
+        className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-[1rem] blur-[100px] bg-accent/30 pointer-events-none"
       />
-
-
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-[800px] w-full bg-white rounded-[3rem] shadow-2xl overflow-hidden relative z-10 p-8 md:p-16 border border-gray-100"
+        className="max-w-[800px] w-full bg-white rounded-[1rem] shadow-2xl overflow-hidden relative z-10 p-8 md:p-16 border border-gray-100"
       >
         {!submitted ? (
           <div>

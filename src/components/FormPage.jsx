@@ -40,14 +40,14 @@ const FormPage = () => {
     e.preventDefault();
 
     const deptMap = {
-      "Soundtrybe": "SOUND_TRYBE",
+      Soundtrybe: "SOUND_TRYBE",
       "Ushering/greeters/protocol": "USHERING/GREETERS/PROTOCOL",
       "Prayer/bible study": "PRAYER/BIBLE_STUDY",
       "Publicity/ outreach": "PUBLICITY/OUTREACH",
-      "Programs": "PROGRAMS",
+      Programs: "PROGRAMS",
       "Media/ technical": "MEDIA/TECHNICAL",
       "Programs/venue management": "PROGRAMS/VENUE_MANAGEMENT",
-      "Membership": "MEMBERSHIP",
+      Membership: "MEMBERSHIP",
       "Welfare/hospitality": "WELFARE/HOSPITALITY",
     };
 
@@ -59,7 +59,9 @@ const FormPage = () => {
       address: formData.address,
       haveServedInADepartment: formData.servedBefore === "Yes",
       previousDepartmentServed: formData.previousDepartment || "",
-      departmentToServeIn: formData.targetDepartments.map(d => deptMap[d]).filter(Boolean),
+      departmentToServeIn: formData.targetDepartments
+        .map((d) => deptMap[d])
+        .filter(Boolean),
     };
 
     try {
@@ -114,9 +116,9 @@ const FormPage = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="max-w-md w-full bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-[3rem] shadow-2xl"
+          className="max-w-md w-full bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-[1rem] md:rounded-[1.2rem] shadow-2xl"
         >
-          <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-accent/20">
+          <div className="w-20 h-20 bg-accent rounded-lg flex items-center justify-center mx-auto mb-8 shadow-lg shadow-accent/20">
             <Check size={40} className="text-navy" />
           </div>
           <h2 className="text-3xl font-heading font-bold text-white mb-4">
@@ -146,7 +148,7 @@ const FormPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] shadow-2xl shadow-navy/5 relative overflow-hidden"
+          className="bg-white p-8 md:p-16 rounded-[1rem] md:rounded-[1.2rem] shadow-2xl shadow-navy/5 relative overflow-hidden"
         >
           {/* Header */}
           <div className="relative z-10 mb-12">
@@ -160,7 +162,7 @@ const FormPage = () => {
               ministry. We appreciate your willingness to be part of the
               workforce.
             </p>
-            <div className="mt-6 p-4 bg-navy/5 rounded-2xl border-l-4 border-accent text-sm text-navy/60 font-medium">
+            <div className="mt-6 p-4 bg-navy/5 rounded-[1rem] text-sm text-navy/60 font-medium">
               Kindly fill out this form carefully and honestly. Your responses
               will help us understand your availability and interests.
             </div>
@@ -369,7 +371,6 @@ const FormPage = () => {
             </motion.button>
           </form>
 
-          {/* Background Decorative */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
         </motion.div>
       </div>

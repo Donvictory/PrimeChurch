@@ -33,20 +33,20 @@ const TrybeFormPage = () => {
     e.preventDefault();
 
     const genderMap = {
-      "Male": "MALE",
-      "Female": "FEMALE"
+      Male: "MALE",
+      Female: "FEMALE",
     };
-    
+
     const memberMap = {
-      "Yes": "YES",
-      "No": "NO",
-      "New member": "NEW_MEMBER"
+      Yes: "YES",
+      No: "NO",
+      "New member": "NEW_MEMBER",
     };
-    
+
     const actionMap = {
       "Join a Trybe": "JOIN",
       "Lead a Trybe": "LEAD",
-      "Join first and lead later": "JOIN_FIRST"
+      "Join first and lead later": "JOIN_FIRST",
     };
 
     const payload = {
@@ -58,7 +58,9 @@ const TrybeFormPage = () => {
       skills: formData.skills,
       whatWouldYouLikeToDo: actionMap[formData.whatWouldYouLikeToDo] || "",
       whyWouldYouLikeToJoin: formData.whyWouldYouLikeToJoin,
-      whichTrybeCategoryToJoin: formData.targetTrybe ? formData.targetTrybe.toUpperCase() : ""
+      whichTrybeCategoryToJoin: formData.targetTrybe
+        ? formData.targetTrybe.toUpperCase()
+        : "",
     };
 
     try {
@@ -137,7 +139,7 @@ const TrybeFormPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white p-8 md:p-16 rounded-[3rem] md:rounded-[4rem] shadow-2xl shadow-navy/5 relative overflow-hidden"
+          className="bg-white p-8 md:p-16 rounded-[1rem] md:rounded-[1.2rem] shadow-2xl shadow-navy/5 relative overflow-hidden"
         >
           {/* Header */}
           <div className="relative z-10 mb-12">
@@ -149,16 +151,14 @@ const TrybeFormPage = () => {
               groups designed to help members grow, connect, and develop in
               different areas of life.
             </p>
-            <div className="mt-6 p-4 bg-navy/5 rounded-2xl border-l-4 border-accent text-sm text-navy/60 font-medium leading-relaxed">
+            <div className="mt-6 p-4 bg-navy/5 rounded-[1rem] text-sm text-navy/60 font-medium leading-relaxed">
               Kindly fill out this form to indicate the Trybe you would like to
               join and your interest in participating or leading.
             </div>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-10 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Full Name */}
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
                   What is your name? *
@@ -174,7 +174,6 @@ const TrybeFormPage = () => {
                 />
               </div>
 
-              {/* Phone */}
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest font-bold text-navy/40">
                   Phone Number *
